@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "build/main.js",
+  "engines": {
+    "node": ">=19.0.0"
+  },
   "type": "module",
   "scripts": {
     "build": "tsc",

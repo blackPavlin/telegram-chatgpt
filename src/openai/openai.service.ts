@@ -25,7 +25,7 @@ export class OpenaiService {
         }
 
         const response = await this.openai.createChatCompletion({
-            model: this.configService.get('OPENAI_MODEL'),
+            model: this.configService.get('OPENAI_CHAT_MODEL'),
             user: this.createChatIdentifier(chatId),
             messages,
         }).catch((error) => {
@@ -46,5 +46,21 @@ export class OpenaiService {
         }
         
         return result;
+    }
+
+    public async createTranscription(stream: Uint8Array, lang: string): Promise<string> {
+        const response = await this.openai.createTranscription(
+            stream,
+            this.configService.get('OPENAI_TRANSCRIPTION_MODEL'),
+            undefined,
+            undefined,
+            undefined,
+            lang,
+        ).catch((error) => {
+            console.log(error?.response?.data?.error)
+            throw new Error(error.message);
+        });
+
+        return response.data.text;
     }
 }

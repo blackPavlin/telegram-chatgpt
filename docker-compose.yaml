@@ -6,3 +6,4 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: telegram-chatgpt
+    restart: allways

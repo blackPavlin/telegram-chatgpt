@@ -7,7 +7,6 @@ export const schema: JSONSchemaType<Config> = {
         'NODE_ENV',
         'TELEGRAM_BOT_TOKEN',
         'OPENAI_TOKEN',
-        'OPENAI_MODEL',
     ],
     properties: {
         NODE_ENV: {
@@ -16,6 +15,13 @@ export const schema: JSONSchemaType<Config> = {
         },
         TELEGRAM_BOT_TOKEN: { type: 'string' },
         OPENAI_TOKEN: { type: 'string' },
-        OPENAI_MODEL: { type: 'string' },
+        OPENAI_CHAT_MODEL: {
+            type: 'string',
+            default: 'gpt-3.5-turbo',
+        },
+        OPENAI_TRANSCRIPTION_MODEL: {
+            type: 'string',
+            default: 'whisper-1',
+        },
     },
 } as const;
